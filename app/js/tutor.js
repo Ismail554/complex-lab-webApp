@@ -169,7 +169,7 @@ function buildDrawer() {
   const chips = h("div.chat-chips", ["quiz me", "hint", "explain", "(3+2i)(4-5i)", "polar -1+sqrt(3)i"].map((c) => h("button.chip", { onclick: () => { input.value = c; send(); } }, c)));
   drawer = h("aside#tutor.drawer", { "aria-label": "Jarvis tutor" },
     h("header.drawer-head", h("div.jarvis-avatar", "J"), h("div", h("b", "Jarvis"), h("small", lang() === "bn" ? "সক্রেটিক টিউটর" : "Socratic tutor")), modeBadge,
-      h("button.icon-btn", { title: "Toggle AI", onclick: () => { store.set({ aiOn: store.state.aiOn === false }); refreshBadge(); if (!ai.status?.ai) toast(lang() === "bn" ? "AI চালু করতে math-lab/.env ফাইলে GEMINI_API_KEY দিন" : "AI needs GEMINI_API_KEY in math-lab/.env — running offline Socratic mode.", "info", 4000); } }, icon("spark")),
+      h("button.icon-btn", { title: "Toggle AI", onclick: () => { store.set({ aiOn: store.state.aiOn === false }); refreshBadge(); if (!ai.status?.ai) toast(lang() === "bn" ? "AI চালু করতে Vercel Environment Variables-এ GEMINI_API_KEY যোগ করে redeploy করুন" : "Set GEMINI_API_KEY in Vercel Project Settings → Environment Variables, then redeploy.", "info", 5000); } }, icon("spark")),
       h("button.icon-btn", { title: "Close", onclick: closeTutor }, icon("x"))),
     log, chips, h("div.chat-row", input, h("button.btn.primary", { onclick: send }, icon("arrow"))));
   document.body.append(drawer); refreshBadge();

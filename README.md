@@ -34,6 +34,7 @@ No build step: the app is plain ES modules served by `server.mjs`.
 ## AI tutor (Gemini) and custom instructions
 
 * The Gemini key lives in `math-lab/.env` as `GEMINI_API_KEY=...`. Only the local server reads it; the browser never sees it, and `.env` is git-ignored. The model defaults to `gemini-2.5-flash`; you can override it with `GEMINI_MODEL=...` in `.env`.
+* **Vercel deployment:** add `GEMINI_API_KEY` under Project Settings â†’ Environment Variables and enable it for Production (and Preview if needed). Redeploy after saving; Vercel does not upload the local `.env` file. The key stays server-side in the `/api/ai` function.
 * **`tutor-instructions.md`** holds the tutor's custom instructions (in Bangla): its persona, language rules, Socratic and Feynman teaching style, syllabus, course conventions and formatting. Edit the file and the next message uses it, no restart needed.
 * The app also tells the tutor which lesson you're on, that lesson's key formulas and your weakest topics.
 * If there's no key, or Gemini fails, Jarvis falls back to the offline Socratic tutor. A Claude key (`ANTHROPIC_API_KEY`) is used as a backup if present.

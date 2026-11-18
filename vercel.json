@@ -1,0 +1,9 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "framework": null,
+  "buildCommand": "node scripts/copy-vendor.mjs",
+  "outputDirectory": "app",
+  "functions": {
+    "api/ai.js": { "maxDuration": 60 }
+  }
+}
